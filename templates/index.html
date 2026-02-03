@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Asian Deli Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <div class="layout">
+      <header class="top-bar">
+        <div class="logo">
+          <span>Asian Deli</span>
+          <strong>Vietnam &amp; Thai</strong>
+        </div>
+        <div class="top-actions">
+          <button class="ghost" type="button">Alerts</button>
+          <div class="user-pill">
+            <span class="role">Manager</span>
+            <span class="user-name">Lan Tran</span>
+          </div>
+          <button class="ghost" type="button">Logout</button>
+        </div>
+      </header>
+
+      <aside class="sidebar">
+        <nav>
+          <a class="active" href="#">Dashboard</a>
+          <a href="#">Orders</a>
+          <a href="#">Menu</a>
+          <a href="#">Website Content</a>
+          <a href="#">Promotions</a>
+          <a href="#">Reviews</a>
+          <a href="#">Analytics</a>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section class="dashboard">
+          <div>
+            <p class="eyebrow">Admin Panel</p>
+            <h1>Fast, touch-friendly order management.</h1>
+            <p class="subtitle">
+              Monitor kitchen status, update orders, and keep the team aligned
+              from a single, tablet-ready workspace.
+            </p>
+          </div>
+          <div class="stats">
+            <article>
+              <h3>Open Orders</h3>
+              <p id="open-count">0</p>
+            </article>
+            <article>
+              <h3>In Progress</h3>
+              <p id="in-progress-count">0</p>
+            </article>
+            <article>
+              <h3>Ready for Pickup</h3>
+              <p id="ready-count">0</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="section-heading">
+            <h2>Orders</h2>
+            <div class="actions">
+              <button id="refresh-button" type="button">Refresh</button>
+              <button class="ghost" type="button">New Order</button>
+            </div>
+          </div>
+          <ul id="order-list" class="order-list" aria-live="polite"></ul>
+          <p class="helper" id="status-message" aria-live="polite"></p>
+        </section>
+
+        <section class="panel quick-entry">
+          <h2>Add walk-in order</h2>
+          <form id="order-form">
+            <label class="field">
+              <span>Table</span>
+              <input type="number" name="table_number" min="1" required />
+            </label>
+            <label class="field">
+              <span>Items</span>
+              <input
+                type="text"
+                name="items"
+                placeholder="Pho tai, spring rolls"
+                required
+              />
+            </label>
+            <label class="field">
+              <span>Time</span>
+              <input type="text" name="placed_at" placeholder="12:45 PM" required />
+            </label>
+            <button type="submit">Add order</button>
+          </form>
+        </section>
+      </main>
+    </div>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
